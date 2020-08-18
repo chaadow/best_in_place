@@ -1,6 +1,9 @@
 #Changelog
 - unreleased
 
+- v.3.1.2 Tom Grushka
+  - Suppress Rails 6 deprecation warnings
+
 - v.3.1.1
   - Chore/improve readme
   - Upgrade PhantomJS version for travis and remove deprecation warning
