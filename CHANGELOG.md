@@ -1,6 +1,8 @@
-#Changelog
-- v.6.1.0
-- Version set to the version of rails it matches to (given that is the usecase)
+# Changelog
+- v.4.0.0
+  - Drop support of older versions of ruby. `>= 3.1.0` required.
+  - Drop support of older versions of Rails. `>= 7.0.0` required.
+  - (internal) Migrate from Travis CI to Github Actions.
 
 - v.3.1.1
   - Chore/improve readme
