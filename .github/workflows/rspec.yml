@@ -8,15 +8,18 @@ on:
     branches:
       - master
 
+permissions:
+  contents: read
+
 jobs:
   test:
-    name: Ruby ${{ matrix.ruby }} - Gemfile ${{ matrix.gemfile }}
+    name: Ruby ${{ matrix.ruby }} - ${{ matrix.rails }}
     runs-on: ubuntu-latest
 
     strategy:
       matrix:
         ruby: [3.1, 3.2, 3.3]
-        gemfile:
+        rails:
           - rails_7.0
           - rails_7.1
           - rails_7.2
@@ -24,15 +27,15 @@ jobs:
     env:
       RAILS_ENV: test
       DISPLAY: ":99.0"
+      BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.rails }}.gemfile
 
     steps:
+    - uses: actions/checkout@v4
     - name: Set up Ruby
       uses: ruby/setup-ruby@v1
       with:
         ruby-version: ${{ matrix.ruby }}
         bundler-cache: true
-      env:
-        BUNDLE_GEMFILE: gemfiles/${{ matrix.rails }}.gemfile
 
     - name: Set up PhantomJS
       run: |
